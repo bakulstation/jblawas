@@ -26,6 +26,6 @@ sudo iptables -F
 sudo iptables -X
 sudo sysctl net.ipv4.ip_forward=0
 sudo sysctl net.ipv4.conf.all.route_localnet=0
-echo -e "\033[32mRestarting PPPwn\033[0m\n" | sudo tee /dev/tty1
+echo -e "\033[32mMemulai Ulang PPPwn\033[0m\n" | sudo tee /dev/tty1
 sudo systemctl restart pipwn
 fi
