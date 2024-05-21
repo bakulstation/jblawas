@@ -23,7 +23,7 @@ if (isset($_POST['back'])){
 
 print("<html> 
 <head>
-<title>PI-Pwn</title>
+<title>Sukses-Jailbreak</title>
 <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
 <style>
 
