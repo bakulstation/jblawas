@@ -2,7 +2,7 @@
 
 if [ ! -f /boot/firmware/PPPwn/config.sh ]; then
 INTERFACE="eth0"
-DTLINK=false
+DTLINK=true
 else
 source /boot/firmware/PPPwn/config.sh
 fi
