@@ -58,7 +58,7 @@ echo -e "\n\n\033[36m__________    _____   ____  __.____ ___.____        _______
 \n\033[33mhttps://github.com/TheOfficialFloW/PPPwn\033[0m\n" 
 \033[0m
 \n\033[33mtokopedia.com/bakulstation\033[0m\n" |
-|sudo tee /dev/tty1
+ sudo tee /dev/tty1
 sudo systemctl stop pppoe
 if [ $USBETHERNET = true ] ; then
 	echo '1-1' | sudo tee /sys/bus/usb/drivers/usb/unbind
