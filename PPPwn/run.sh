@@ -7,7 +7,7 @@ SHUTDOWN=true
 USBETHERNET=false
 PPPOECONN=false
 VMUSB=false
-DTLINK=true
+DTLINK=false
 else
 source /boot/firmware/PPPwn/config.sh
 fi
