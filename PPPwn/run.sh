@@ -41,9 +41,9 @@ if [ $PPPOECONN = true ] ; then
 else   
    echo -e "\033[92mKoneksi Internet:\033[93m Dimatikan\033[0m" | sudo tee /dev/tty1
 fi
-if [[ ! $(ethtool $INTERFACE) == *"Link Detected: yes"* ]]; then
+if [[ ! $(ethtool $INTERFACE) == *"Link detected: yes"* ]]; then
    echo -e "\033[31mMenunggu Sambungan\033[0m" | sudo tee /dev/tty1
-   while [[ ! $(ethtool $INTERFACE) == *"Link Detected: yes"* ]]
+   while [[ ! $(ethtool $INTERFACE) == *"Link detected: yes"* ]]
    do
       coproc read -t 2 && wait "$!" || true
    done
