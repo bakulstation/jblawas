@@ -5,20 +5,10 @@ if (isset($_POST['save'])){
 	$config .= "INTERFACE=\"".str_replace(" ", "", trim($_POST["interface"]))."\"\n";
 	$config .= "FIRMWAREVERSION=\"".$_POST["firmware"]."\"\n";
 	$config .= "SHUTDOWN=false\n";
-	$config .= "USBETHERNET=".(isset($_POST["usbether"]) ? "true" : "false")."\n";
 	$config .= "PPPOECONN=".(isset($_POST["pppoeconn"]) ? "true" : "false")."\n";
-	$config .= "VMUSB=".(isset($_POST["vmusb"]) ? "true" : "false")."\n";
 	$config .= "DTLINK=".(isset($_POST["dtlink"]) ? "true" : "false")."\n";
 	exec('echo "'.$config.'" | sudo tee /boot/firmware/PPPwn/config.sh');
 	exec('echo "'.trim($_POST["plist"]).'" | sudo tee /boot/firmware/PPPwn/ports.txt');
-    if (isset($_POST["vmusb"]) == true)
-	{
-      exec('sudo bash /boot/firmware/PPPwn/remount.sh &');
-	}
-	else
-	{
-      exec('sudo rmmod g_mass_storage');
-	}
 	if (isset($_POST["pppoeconn"]) == true)
 	{
       $cmd = 'sudo systemctl is-active pipwn';
@@ -56,10 +46,6 @@ if (isset($_POST['payloads'])){
    header("Location: payloads.php");
 }
 
-if (isset($_POST['remount'])){
-   exec('sudo bash /boot/firmware/PPPwn/remount.sh &');
-}
-
 $cmd = 'sudo cat /boot/firmware/PPPwn/config.sh';
 exec($cmd ." 2>&1", $data, $ret);
 if ($ret == 0){
@@ -79,9 +65,6 @@ foreach ($data as $x) {
    elseif (str_starts_with($x, 'PPPOECONN')) {
       $pppoeconn = (explode("=", $x)[1]);
    }
-   elseif (str_starts_with($x, 'VMUSB')) {
-      $vmusb = (explode("=", $x)[1]);
-   }
    elseif (str_starts_with($x, 'DTLINK')) {
       $dtlink = (explode("=", $x)[1]);
    }
@@ -90,9 +73,7 @@ foreach ($data as $x) {
    $interface = "eth0";
    $firmware = "11.00";
    $shutdown = "false";
-   $usbether = "false";
    $pppoeconn = "true";
-   $vmusb = "false";
    $dtlink = "false";
 }
 
@@ -230,19 +211,6 @@ function setEnd() {
 <br><br>
 <form method=\"post\"><button name=\"payloads\">Load Payloads</button> &nbsp; ");
 
-
-$cmd = 'sudo tr -d \'\0\' </proc/device-tree/model';
-exec($cmd ." 2>&1", $pidata, $ret);
-if ($vmusb == "true" && str_starts_with(trim(implode($pidata)),  "Raspberry Pi 4") || str_starts_with(trim(implode($pidata)), "Raspberry Pi 5"))
-{
-print("<button name=\"remount\">Remount USB</button> &nbsp; ");
-}
-
-print("<button name=\"restart\">Restart PPPwn</button> &nbsp; <button name=\"reboot\">Reboot PI</button> &nbsp; <button name=\"shutdown\">Shutdown PI</button>
-</form>
-</center>
-<br>");
-
 print("<br><table align=center><td><form method=\"post\">");
 
 print("<select name=\"interface\">");
@@ -277,17 +245,6 @@ print("</select><label for=\"firmware\">&nbsp; Firmware version</label><br>");
 
 
 $cval = "";
-if ($usbether == "true")
-{
-$cval = "checked";
-}
-print("<br><input type=\"checkbox\" name=\"usbether\" value=\"".$usbether."\" ".$cval.">
-<label for=\"usbether\">&nbsp;Use usb ethernet adapter</label>
-<br>");
-
-
-
-$cval = "";
 if ($dtlink == "true")
 {
 $cval = "checked";
@@ -306,19 +263,6 @@ $cval = "checked";
 print("<br><input type=\"checkbox\" name=\"pppoeconn\" value=\"".$pppoeconn."\" ".$cval.">
 <label for=\"usecpp\">&nbsp;Enable console internet access</label>
 <br>");
-
-
-
-if (str_starts_with(trim(implode($pidata)),  "Raspberry Pi 4") || str_starts_with(trim(implode($pidata)), "Raspberry Pi 5"))
-{
-$cval = "";
-if ($vmusb == "true")
-{
-$cval = "checked";
-}
-print("<br><input type=\"checkbox\" name=\"vmusb\" value=\"".$vmusb."\" ".$cval.">
-<label for=\"vmusb\">&nbsp;Enable usb drive to console</label>");
-}
 
 
 print("<br>
