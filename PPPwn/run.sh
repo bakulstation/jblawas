@@ -55,9 +55,9 @@ sudo systemctl stop pppoe
 echo -e "\n\033[36m$PITYP\033[0;43m\nFirmware:\033[93m $FIRMWAREVERSION\033[0;43m\nKoneksi:\033[93m $INTERFACE\033[0m" | sudo tee /dev/tty1
 echo -e "\033[92mPS4 Hen PPPwn:\033[93m C++ Spa++ Mokondo Edition $CPPBIN \033[0m" | sudo tee /dev/tty1
 if [ $PPPOECONN = true ] ; then
-   echo -e "\033[0;43mKoneksi Internet:\033[93m Dinyalakan\033[0m" | sudo tee /dev/tty1
+   echo -e "\033[0;43mKoneksi Internet:\033[0m Dinyalakan\033[0m" | sudo tee /dev/tty1
 else   
-   echo -e "\033[0;43mKoneksi Internet:\033[93m Dimatikan\033[0m" | sudo tee /dev/tty1
+   echo -e "\033[0;43mKoneksi Internet:\033[0m Dimatikan\033[0m" | sudo tee /dev/tty1
 fi
 if [[ ! $(ethtool $INTERFACE) == *"Link detected: yes"* ]]; then
    echo -e "\033[31mMenunggu Sambungan\033[0m" | sudo tee /dev/tty1
