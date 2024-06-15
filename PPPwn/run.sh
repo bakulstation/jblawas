@@ -33,31 +33,18 @@ echo -e "\n\n\033[36m _____  _____  _____
 |_|    |_|    |_|      \\_/\\_/ |_| |_|\033[0m
 \n\033[33mhttps://github.com/TheOfficialFloW/PPPwn\033[0m\n" | sudo tee /dev/tty1
 
-echo -e "\n\n\033[41m⠀⠀⡶⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⢇⢃⢱⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠘⣆⠂⢧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠘⡌⠌⢆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠸⡌⡜⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⢱⡰⡹⡀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⢣⠡⠱⡀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠈⢇⢣⢱⡤⣤⣴⣦⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⡞⠧⢶⣢⣧⠶⠛⠀⠀⠀
-⠀⠀⠀⠀⠀⢰⣞⣯⡽⢷⣒⣣⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠋⠁⠀⠀⠱⣪⣦⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠿⠊⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠴⠤⠠⠤⠀⠤⠤⠠⠤⠄⠀⠴⠴⠶⠂⠶⠄\033[0m
-\n\'033[0;43m'MOKONDO_64\033[0m\n" | sudo tee /dev/tty1
+echo -e "\033[1;45m  MOKONDO_64  \033[0m\n" | sudo tee /dev/tty1
 
 sudo systemctl stop pppoe
 
-echo -e "\n\033[36m$PITYP\033[0;43m\nFirmware:\033[93m $FIRMWAREVERSION\033[0;43m\nKoneksi:\033[93m $INTERFACE\033[0m" | sudo tee /dev/tty1
-echo -e "\033[92mPS4 Hen PPPwn:\033[93m C++ Spa++ Mokondo Edition $CPPBIN \033[0m" | sudo tee /dev/tty1
+
+echo -e "\033[1;45mFirmware:\033[42m$FIRMWAREVERSION \033[1;43m" | sudo tee /dev/tty1 
+echo -e "\033[1;42mKoneksi:\033[44m$INTERFACE \033[1;41m"| sudo tee /dev/tty1
+echo -e "\033[1;46mPS4 Hen PPPwn:\033[41m C++ Spa++ Mokondo Edition $CPPBIN \033[0m" | sudo tee /dev/tty1
 if [ $PPPOECONN = true ] ; then
-   echo -e "\033[0;43mKoneksi Internet:\033[0m Dinyalakan\033[0m" | sudo tee /dev/tty1
+   echo -e "\033[0;46mKoneksi Internet:\033[0m Dinyalakan\033[0m" | sudo tee /dev/tty1
 else   
-   echo -e "\033[0;43mKoneksi Internet:\033[0m Dimatikan\033[0m" | sudo tee /dev/tty1
+   echo -e "\033[0;46mKoneksi Internet:\033[0m Dimatikan\033[0m" | sudo tee /dev/tty1
 fi
 if [[ ! $(ethtool $INTERFACE) == *"Link detected: yes"* ]]; then
    echo -e "\033[31mMenunggu Sambungan\033[0m" | sudo tee /dev/tty1
