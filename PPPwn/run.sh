@@ -33,7 +33,7 @@ echo -e "\n\n\033[36m _____  _____  _____
 echo -e "\033[1;45m  PPPWN_64_EXTREME_EDITION  \033[0m\n" | sudo tee /dev/tty1
 sudo systemctl stop pppoe
 
-echo -e "\n\033[36m$PITYP\033[92m\nFirmware:\033[93m $FIRMWAREVERSION\033[92m\nKoneksi:\033[93m $INTERFACE\033[0m" | sudo tee /dev/tty1
+echo -e "\n\033[36mSTB PS4 AUTO HEN \033[92m\nFirmware:\033[93m $FIRMWAREVERSION\033[92m\nKoneksi:\033[93m $INTERFACE\033[0m" | sudo tee /dev/tty1
 echo -e "\033[92mPS4 Hen PPPwn:\033[93m C++ PPPWN 64 EXTREME EDITION $CPPBIN \033[0m" | sudo tee /dev/tty1
 if [ $PPPOECONN = true ] ; then
    echo -e "\033[92mKONEKSI INTERNET:\033[93m NYALA\033[0m" | sudo tee /dev/tty1
